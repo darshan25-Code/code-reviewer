@@ -73,7 +73,7 @@ const loginUser = async (req,res)=>{
     })
   }
 
-  const token = jwt.sign({ userid : user._id}, process.env.JWT_SECRET_KEY)
+  const token = jwt.sign({ userId : user._id}, process.env.JWT_SECRET_KEY)
 
   res.json({
     message : "User Login Successfully",
