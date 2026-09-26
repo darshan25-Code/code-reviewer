@@ -1,4 +1,5 @@
 const codeReviewModel = require('../models/CodeReview')
+const { generateReview} = require('../services/ai.service')
 
 const createReview = async (req,res)=>{
     try{
@@ -10,10 +11,13 @@ const createReview = async (req,res)=>{
             })
         }
 
+        const aiReview = await generateReview(code, language)
+
         const newReview = await codeReviewModel.create({
             user : req.userId,
             code,
-            language
+            language,
+            review: aiReview
         })
 
         res.status(201).json({

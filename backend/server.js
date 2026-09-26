@@ -6,6 +6,7 @@ const connectDB = require('./config/db')
 const userRoutes = require('./routes/userRoutes')
 const reviewRoutes = require('./routes/reviewRoutes')
 const protect = require('./middleware/auth.middleware')
+require('./services/ai.service')
 
 const app = express()
 app.use(express.json())
