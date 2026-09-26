@@ -4,6 +4,7 @@ const cors = require('cors')
 const connectDB = require('./config/db')
 
 const userRoutes = require('./routes/userRoutes')
+const reviewRoutes = require('./routes/reviewRoutes')
 const protect = require('./middleware/auth.middleware')
 
 const app = express()
@@ -13,6 +14,7 @@ app.use(cors())
 connectDB()
 
 app.use('/api/auth',userRoutes)
+app.use('/api/reviews',reviewRoutes)
 
 app.get('/api/health',(req,res)=>{
     res.json({
